@@ -26,37 +26,35 @@ const Pocket = {
   },
 
   i18n: function (translations) {
-    this.translations = translations;
+    return {
+      translations: translations,
+      interpolate: function(template, fillers) {
+        let ret = template;
+          for (const key of Object.keys(fillers)) {
+              ret = ret.replace(`{${key}}`, fillers[key])
+          }
+        return ret;
+      },
+      t: function (lookupStr, fillers) {
+        const lookupKeys = lookupStr.split('.');
+        let translation = this.translations;
 
-    this.interpolate = (template, fillers) => {
-      let ret = template;
-        for (const key of Object.keys(fillers)) {
-            ret = ret.replace(`{${key}}`, fillers[key])
+        for (let i = 0; i < lookupKeys.length; i++) {
+          if (!translation[lookupKeys[i]]) break;
+          translation = translation[lookupKeys[i]];
         }
-      return ret;
-    };
 
-    this.t = (lookupStr, fillers) => {
-      const lookupKeys = lookupStr.split('.');
-      let translation = this.translations;
+        if (!translation || typeof translation === 'object') {
+          throw new Error ('pocket-i18n - Translation ' + lookupStr + 'doesn\'t exist');
+        }
 
-      for (let i = 0; i < lookupKeys.length; i++) {
-        if (!translation[lookupKeys[i]]) break;
-        translation = translation[lookupKeys[i]];
-      }
-
-      if (!translation || typeof translation === 'object') {
-        throw new Error ('pocket-i18n - Translation ' + lookupStr + 'doesn\'t exist');
-      }
-
-      if (!fillers) {
-        return translation;
-      } else {
-        return this.interpolate(translation, fillers);
+        if (!fillers) {
+          return translation;
+        } else {
+          return this.interpolate(translation, fillers);
+        }
       }
     };
-
-    return this;
   }
 };
 
