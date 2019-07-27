@@ -1,0 +1,16 @@
+{
+    "en": {
+        "homePage": {
+            "footer": {
+                "copyright": "Copyright {companyName} 2019"
+            }
+        }
+    },
+    "no": {
+        "homePage": {
+            "footer": {
+                "copyright": "Opphavsrett {companyName} 2019"
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "pocket-i18n",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "build": "webpack --config webpack.config.js"
+  },
+  "keywords": [
+    "internationalization",
+    "translation",
+    "tiny",
+    "small"
+  ],
+  "author": "Andrew Tate",
+  "license": "MIT",
+  "devDependencies": {
+    "json-server": "^0.15.0",
+    "mocha": "^6.2.0",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6"
+  }
+}
