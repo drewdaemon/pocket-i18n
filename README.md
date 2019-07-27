@@ -1,6 +1,7 @@
 # Pocket i18n
 
-## Pocket is a tiny (< 1KB) internationalization library that
+Pocket is a **blazing fast** internationalization library that can fit in your pocket **(< 1KB)**
+
 :white_check_mark: Supports lightning-fast translated string lookups (allows nesting!)
 
 :white_check_mark: Features string template interpolation
