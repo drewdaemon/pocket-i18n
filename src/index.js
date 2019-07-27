@@ -30,9 +30,10 @@ const Pocket = {
       translations: translations,
       interpolate: function(template, fillers) {
         let ret = template;
-          for (const key of Object.keys(fillers)) {
-              ret = ret.replace(`{${key}}`, fillers[key])
-          }
+        const keys = Object.keys(fillers);
+        for (let i = 0; i < keys.length; i++) {
+            ret = ret.replace(`{${keys[i]}}`, fillers[keys[i]]);
+        }
         return ret;
       },
       t: function (lookupStr, fillers) {
