@@ -1,5 +1,5 @@
-var assert = require('assert');
-const Pocket = require('../src/index');
+import assert from 'assert';
+import Pocket from '../src/index';
 
 describe('Translating', function () {
   it('looks up nested translations', function () {

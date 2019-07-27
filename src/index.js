@@ -59,4 +59,4 @@ const Pocket = {
   }
 };
 
-module.exports = Pocket;
+export default Pocket;
