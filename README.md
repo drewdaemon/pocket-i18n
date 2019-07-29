@@ -2,15 +2,15 @@
 
 Pocket is a **blazing fast** internationalization library that can fit in your pocket **(< 1KB)**
 
-:white_check_mark: Supports lightning-fast translated string lookups (allows nesting!)
+:white_check_mark: Fast translated string lookups (allows nesting!)
 
-:white_check_mark: Features string template interpolation
+:white_check_mark: String template interpolation
 
-:white_check_mark: Is compatible with ALL browsers (yes, even IE 11)
+:white_check_mark: Compatible with ALL browsers (yes, even IE 11)
 
 :white_check_mark: Can load translation files from URL
 
-:white_check_mark: Has absolutely no dependencies
+:white_check_mark: Absolutely no dependencies
 
 ## Getting started
 ```bash
