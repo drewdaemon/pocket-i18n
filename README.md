@@ -48,7 +48,6 @@ intl.t('homePage.footer.copyright', {companyName: 'My Company'});
 ```
 
 #### From URL
-This method expects a GET call to the URL to return a JSON object that it will use to lookup translations.
 ```js
 const intl = Pocket.loadFromUrl('translations/norwegian.json', function (intl) {
     intl.t('homePage.footer.copyright', {companyName: 'My Company'});
