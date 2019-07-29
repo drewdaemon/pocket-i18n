@@ -17,10 +17,22 @@ Pocket is a **blazing fast** internationalization library that can fit in your p
 npm i pocket-i18n
 ```
 
-### Load translations from object
+### Import Pocket
+You can use ES6 imports or (CommonJS `require`).
 ```js
 import Pocket from 'pocket-i18n';
+```
 
+Or, just use a script tag:
+```html
+<script src="node_modules/pocket-i18n/pocket-i18n.js"></script>
+```
+
+### Load translations
+Both `Pocket.load` and `Pocket.loadFromUrl` return an `intl` object with a `t` method for translation lookups.
+
+#### From an object
+```js
 const translations = {
     homePage: {
         footer: {
@@ -35,21 +47,66 @@ intl.t('homePage.footer.copyright', {companyName: 'My Company'});
 // Copyright My Company 2019
 ```
 
-### Load translations from URL
+#### From URL
+This method expects a GET call to the URL to return a JSON object that it will use to lookup translations.
 ```js
-import Pocket from 'pocket-i18n';
-
-const intl = Pocket.load('translations/norwegian.json', function (intl) {
+const intl = Pocket.loadFromUrl('translations/norwegian.json', function (intl) {
     intl.t('homePage.footer.copyright', {companyName: 'My Company'});
     // Opphavsrett My Company 2019
 });
 ```
 
-### With async/await and promises (need polyfill for IE)
+#### With async/await and promises (need polyfill for IE)
 ```js
-import Pocket from 'pocket-i18n';
-
-const intl = await new Promise(resolve => Pocket.load('translations/spanish.json', resolve));
+const intl = await new Promise(resolve => Pocket.loadFromUrl('translations/spanish.json', resolve));
 intl.t('homePage.footer.copyright', {companyName: 'My Company'});
 // Derechos de autor My Company 2019
+```
+
+### Using `t(lookupStr: string, fillers?: Object)`
+
+#### `lookupStr`
+The translation lookup. Let's say translations object looks like this:
+```js
+{
+    homePage: {
+        footer: {
+            copyright: 'Copyright My Company 2019'
+        }
+    }
+}
+```
+To look up the copyright translation, we would pass `'homePage.footer.copyright'`.
+
+#### fillers (optional)
+The set of interpolation values. Let's say translations object looks like this:
+```js
+{
+    homePage: {
+        footer: {
+            copyright: 'Copyright {companyName} 2019'
+        }
+    }
+}
+```
+We would pass the fillers object to `t` like so:
+```js
+intl.t('homePage.footer.copyright', {companyName: 'My company'});
+```
+
+### Advanced example
+```js
+const translations = {
+    homePage: {
+        footer: {
+            copyright: 'Copyright {companyName} 2019',
+            companyName: 'Translated Company Name'
+        }
+    }
+};
+
+const intl = Pocket.load(translations);
+
+intl.t('homePage.footer.copyright', {companyName: intl.t('homePage.footer.companyName')});
+// Copyright Translated Company Name 2019
 ```

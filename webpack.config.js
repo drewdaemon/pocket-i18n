@@ -9,6 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'pocket-i18n.js',
         library: 'Pocket',
+        libraryExport: 'default',
         libraryTarget: 'umd'
     },
     optimization: {
