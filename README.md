@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/drewctate/pocket-i18n.svg?branch=master)](https://travis-ci.com/drewctate/pocket-i18n)
+
 # Pocket i18n
 
 Pocket is a **blazing fast** internationalization library that can fit in your pocket **(< 1KB)**
